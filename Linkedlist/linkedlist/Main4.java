@@ -1,0 +1,62 @@
+//delete beginning
+
+import java.util.*;
+class Node{
+    int data;
+    Node next;
+    Node(int val){
+      this.data=val;
+      this.next=null;
+    }
+}
+class LinkedList{
+    Node head;
+
+    void insertend(int val){
+      Node newNode=new Node(val);
+      if(head==null){
+         head=newNode;
+         return;
+      }
+      Node temp=head;
+      while(temp.next!=null){
+         temp=temp.next;
+      }
+      temp.next=newNode;
+    }
+    
+    void deleteBegin(){
+      if(head==null){
+         System.out.println("List is empty");
+         return;
+      }
+      System.out.println("Deleted: "+head.data);
+      head=head.next;
+    }
+
+
+
+    void display(){
+      Node temp=head;
+      while(temp!=null){
+         System.out.print(temp.data+" ");
+         temp=temp.next;
+      }
+      System.out.println("null");
+    }
+}
+public class Main{
+    public static void main(String[] args){
+      Scanner sc=new Scanner(System.in);
+      LinkedList list=new LinkedList();
+      int n=sc.nextInt();
+      System.out.println("Enter elements:");
+      for(int i=0;i<n;i++){
+         int val=sc.nextInt();
+         list.insertend(val);
+      }
+      list.deleteBegin();
+      list.display();
+      sc.close();
+    }
+}
